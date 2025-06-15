@@ -3,6 +3,7 @@ import { getChatHistory } from "../apis/ChatApi";
 import { createWebSocket, sendMessage, closeWebSocket } from "../sockets/websocket";
 import { getLastChatReads } from "../apis/ChatReadApi"; 
 
+
 const ChatRoom = ({ roomId }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -49,6 +50,7 @@ const ChatRoom = ({ roomId }) => {
 
   useEffect(() => {
     scrollToBottom();
+    
   }, [messages]);
 
 
@@ -227,9 +229,9 @@ const ChatRoom = ({ roomId }) => {
 
                 {/* ⭐ 이 부분이 핵심입니다: 내가 보낸 메시지 배경색을 blue-600으로 다시 설정 */}
                 <div
-                  className={`bg-${
-                    isMine ? "blue-600 text-white" : "gray-700 text-gray-200"
-                  } rounded-lg p-2 max-w-xs break-words`}
+                  className={`rounded-lg p-2 max-w-xs break-words ${
+                    isMine ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200"
+                  }`}
                 >
                   <div>{msg.message}</div>
                 </div>
